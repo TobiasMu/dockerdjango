@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% block body %}
+<h1>ListView</h1>
+
+{% for trade in trade_list %}
+<p>{{ trade }}</p>
+
+
+
+{% endfor %}
+{% endblock %}
