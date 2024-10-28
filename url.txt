@@ -1,0 +1,2 @@
+
+postgresql://bond_user:your_password@localhost:5432/bond_db
