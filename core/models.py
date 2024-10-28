@@ -41,5 +41,5 @@ class Product(models.Model):
 
     def __str__(self):
         return (
-            f"{self.id}, {self.ProductType} , {self.ProductClass}, {self.description}"
+            f"{self.id}, {self.product_type} , {self.product_class}, {self.description}"
         )

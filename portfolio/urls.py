@@ -20,7 +20,6 @@ from django.urls import include, path
 
 from core.views import FrontPage
 
-app_name = "root"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("core/", include("core.urls")),
