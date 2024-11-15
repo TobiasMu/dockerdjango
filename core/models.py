@@ -1,19 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-class Trade(models.Model):
-    counterparty = models.ForeignKey(CounterParty, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    tradingbook = models.ForeignKey(TradingBook, on_delete=models.CASCADE)
-
-    price = models.FloatField()
-    quantity = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.id}, {self.product} , {self.quantity}, {self.price}"
-
-
 class Product(models.Model):
     description = models.CharField(max_length=50)
 
@@ -55,7 +42,20 @@ class CounterParty(models.Model):
 
 
 class TradingBook(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, default="book")
 
     def __str__(self):
         return f"{self.name}"
+
+
+# Create your models here.
+class Trade(models.Model):
+    counterparty = models.ForeignKey(CounterParty, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    tradingbook = models.ForeignKey(TradingBook, on_delete=models.CASCADE)
+
+    price = models.FloatField()
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.id}, {self.product} , {self.quantity}, {self.price}"
