@@ -12,7 +12,7 @@ class CreateTrade(CreateView):
     model = Trade
     template_name = "core/createtrade.html"
     success_url = reverse_lazy("frontpage")
-    fields = ["counterparty", "product", "price", "quantity"]
+    fields = ["counterparty", "product", "price", "quantity", "tradingbook"]
 
 
 class CreateProduct(CreateView):

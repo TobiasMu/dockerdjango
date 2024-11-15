@@ -3,8 +3,10 @@ from django.db import models
 
 # Create your models here.
 class Trade(models.Model):
-    counterparty = models.CharField(max_length=50)
-    product = models.CharField(max_length=50)
+    counterparty = models.ForeignKey(CounterParty, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    tradingbook = models.ForeignKey(TradingBook, on_delete=models.CASCADE)
+
     price = models.FloatField()
     quantity = models.IntegerField()
 
@@ -43,3 +45,17 @@ class Product(models.Model):
         return (
             f"{self.id}, {self.product_type} , {self.product_class}, {self.description}"
         )
+
+
+class CounterParty(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class TradingBook(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name}"
