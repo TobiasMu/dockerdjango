@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% block body %}
+<h1>ListView</h1>
+<div class="align-center col-10 offset-1">
+    <div class="d-flex justify-content-between align-items-center">
+        <p class="lead ml-0">CounterParties</p>
+        <form hx-post="{% url 'core:add-counterparty' %}" hx-target='#cpty-list' class="d-flex align-items-center">
+            {% csrf_token %}
+            <input type="text" name="counterparty" class="form-control-sm mr-2" placeholder="Enter a counterparty" />
+            <button type="submit" class="btn btn-success btn-sm">add counterparty</button>
+        </form>
+    </div>
+    <hr/>
+<div id="cpty-list">
+  {% include 'partials/counterparty-list.html' %}
+</div>
+{% endblock %}

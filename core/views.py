@@ -37,3 +37,16 @@ class ListTrades(ListView):
 class ListProducts(ListView):
     model = Product
     template_name = "core/listproducts.html"
+
+
+class ListCounterParties(ListView):
+    model = CounterParty
+    template_name = "core/listcounterparties.html"
+    context_object_name = "parties"
+
+
+def add_counter_party(request):
+    name = request.POST.get("counterparty")
+    CounterParty.objects.create(name=name)
+    parties = CounterParty.objects.all()
+    return render(request, "partials/counterparty-list.html", {"parties": parties})
